@@ -33,7 +33,7 @@ html, body {
 
 .base-card {
   margin-top: 25px;
-  background-color: #fafafa;
+  background-color: #f4f4f4;
   border-radius: 10px;
 }
   
@@ -42,7 +42,7 @@ html, body {
   font-size: 1em;
   letter-spacing: -0.015em;
   color: #263238;
-  height: 50px;
+  height: 45px;
 }
    
 .base-input::placeholder {

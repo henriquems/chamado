@@ -1,0 +1,50 @@
+.container-tituto-pesquisa {
+    padding: 10px 0 0 10px;
+    margin-left: 10px;
+}
+
+.titulo-pesquisa {
+    font-size: 16px;
+}
+
+.label-form-pesquisa {
+    color: #999;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.container-campos-pesquisa {
+   padding-top: 20px;
+   padding-bottom: 20px;
+   margin-left: 20px;
+   margin-right: 20px;
+}
+
+.container-buttons-pesquisa {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+
+.buttons-pesquisa {
+    height: 40px;
+    width: 110px;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.icone-pesquisa {
+    margin-right:  10px;
+}
+
+.container-resultado-pesquisa {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.button-novo {
+    margin-right: 20px;
+    width: 110px;
+}

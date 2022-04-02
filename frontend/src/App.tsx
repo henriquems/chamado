@@ -12,7 +12,7 @@ function App() {
   return (
     <BrowserRouter>
         <NavBar />
-
+        
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/admin/" element={<Home /> } />
@@ -20,7 +20,6 @@ function App() {
           <Route path="/admin/categoria/" element={<Categoria /> } />
           <Route path="/admin/subcategoria/" element={<Subcategoria /> } />
         </Routes>
-        
         <Footer />
     </BrowserRouter>
   );

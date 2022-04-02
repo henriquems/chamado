@@ -34,8 +34,12 @@
     background-color: var(--color-primary) !important;
 }
 
+.logo {
+    opacity: 0.8;
+}
+
 .logo-hover:hover {
-    opacity: 0.7; 
+    opacity: 0.6; 
 }
 
 .icone-menu {

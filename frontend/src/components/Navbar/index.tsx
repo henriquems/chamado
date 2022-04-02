@@ -16,7 +16,7 @@ const Navbar = () => {
     <div className="container">
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary main-nav">
           <Link to="/">
-            <Logo className="logo-hover" />
+            <Logo className="logo logo-hover" />
           </Link>
 
           <button
