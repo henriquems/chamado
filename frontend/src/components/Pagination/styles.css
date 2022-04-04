@@ -2,8 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 40px;
-    margin-bottom: 60px;
+    margin-top: 10px;
+    margin-bottom: 50px;
 }
 
 .pagination-item {

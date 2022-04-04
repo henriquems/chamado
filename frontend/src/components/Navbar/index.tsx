@@ -37,10 +37,22 @@ const Navbar = () => {
                   <NavLink to="/admin"><BsHouseDoor className="icone-menu" />Home</NavLink>
                 </div>
               </li>
-              <li className="nav-item">
-                <div className="nav-link">
-                  <NavLink to="/admin/usuario"><FaUser className="icone-menu" />Usuários</NavLink>
+              <li className="nav-item dropdown">
+                <div className="nav-link dropdown-toggle nav-titulo-submenu" data-bs-toggle="dropdown">
+                  <FaUser className="icone-menu" /> Usuários
                 </div>
+                <ul className="dropdown-menu dropdown-menu-end fade-down">
+                  <li>
+                    <div className="dropdown-item">
+                      <NavLink to="/admin/grupo"><AiFillFolderOpen className="icone-menu" />Grupos</NavLink>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="dropdown-item">
+                      <NavLink to="/admin/usuario"><AiFillFolderOpen className="icone-menu" />Usuários</NavLink>
+                    </div>
+                  </li>
+                </ul>
               </li>
               <li className="nav-item dropdown">
                 <div className="nav-link dropdown-toggle nav-titulo-submenu" data-bs-toggle="dropdown">

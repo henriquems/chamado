@@ -14,6 +14,18 @@ html, body {
     height: 100%;
 }
 
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+a,
+a:hover {
+    text-decoration: none;
+    color: unset;
+}
+
 .content {
     flex: 1 0 auto;
 }
@@ -47,4 +59,78 @@ html, body {
    
 .base-input::placeholder {
   color: #9E9E9E;
+}
+
+/*Início css Select */
+.select__control {
+    border-radius: 5px !important;
+    font-size: 1em;
+    letter-spacing: -0.015em;
+    color: #263238;
+    height: 45px;
+}
+
+.select__placeholder {
+    color: #9E9E9E !important;
+}
+
+.select__indicator-separator {
+    display: none;
+}
+/*Fim css Select*/
+
+
+.container-tituto-pesquisa {
+    padding: 10px 0 0 10px;
+    margin-left: 10px;
+}
+
+.titulo-pesquisa {
+    font-size: 16px;
+}
+
+.label-form-pesquisa {
+    color: #999;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.container-campos-pesquisa {
+   padding-top: 10px;
+   padding-bottom: 20px;
+   margin-left: 20px;
+   margin-right: 20px;
+}
+
+.container-buttons-pesquisa {
+    display: flex;
+    margin-top: 20px;
+    padding: 0;
+}
+
+.buttons-pesquisa {
+    height: 40px;
+    width: 110px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.icone-pesquisa {
+    margin-right:  10px;
+}
+
+.container-resultado-pesquisa {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.button-novo {
+    margin-right: 20px;
+    width: 110px;
+}
+
+.container-datatable {
+    margin-top: 10px;
 }
