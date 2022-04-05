@@ -32,7 +32,7 @@ const Usuarios = () => {
       url: "/usuarios",
       params: {
         page: controlComponetsData.activePage,
-        size: 5,
+        size: 10,
       },
     };
 
@@ -77,7 +77,7 @@ const Usuarios = () => {
         <Pagination
           forcePage={page?.number}
           pageCount={page ? page.totalPages : 0}
-          range={5}
+          range={10}
           onChange={handlePageChange}
         />
       </div>
