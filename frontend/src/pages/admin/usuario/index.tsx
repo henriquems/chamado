@@ -51,7 +51,7 @@ const Usuarios = () => {
 
       <UsuarioFilter />
 
-      <TitleResult descricao="usuário" quantidade={50} />
+      <TitleResult descricao="usuário" quantidade={page ? page.totalElements : 0} />
 
       <div className="container-datatable">
         <div className="table-responsive">
@@ -73,13 +73,14 @@ const Usuarios = () => {
           </table>
         </div>
       </div>
-
-      <Pagination
-        forcePage={page?.number}
-        pageCount={page ? page.totalPages : 0}
-        range={5}
-        onChange={handlePageChange}
-      />
+      <div className="container-paginacao">
+        <Pagination
+          forcePage={page?.number}
+          pageCount={page ? page.totalPages : 0}
+          range={5}
+          onChange={handlePageChange}
+        />
+      </div>
     </div>
   );
 };

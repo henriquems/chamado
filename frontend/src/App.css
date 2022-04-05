@@ -18,7 +18,7 @@ ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-  }
+}
   
 a,
 a:hover {
@@ -105,12 +105,11 @@ a:hover {
 
 .container-buttons-pesquisa {
     display: flex;
-    margin-top: 20px;
+    margin-top: 44px;
     padding: 0;
 }
 
 .buttons-pesquisa {
-    height: 40px;
     width: 110px;
     border-radius: 5px;
     margin-right: 10px;
@@ -128,9 +127,14 @@ a:hover {
 
 .button-novo {
     margin-right: 20px;
-    width: 110px;
+    height: 45px;
 }
 
 .container-datatable {
     margin-top: 10px;
+}
+
+.container-paginacao {
+ margin-top: 20px;
+ margin-bottom: 50px;
 }

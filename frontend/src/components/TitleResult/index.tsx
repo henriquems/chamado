@@ -14,7 +14,7 @@ const TitleResult = ({descricao, quantidade} : Props) => {
                     <AiOutlineFileSearch className="icone-title-result" />
                 </div>
                 <div className="container-titulo-resultado">
-                    <label className='label-resultado-pesqusia'>Foram encontrados {quantidade} {descricao} para sua pesquisa</label>
+                    <label className='label-resultado-pesqusia'>Foram encontrados {quantidade} {descricao}s para sua pesquisa</label>
                 </div>
             </div>
             <div>

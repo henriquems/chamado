@@ -5,12 +5,12 @@ import TitleBar from "components/TitleBar";
 import TitleResult from "components/TitleResult";
 import { useCallback, useEffect, useState } from "react";
 import { Categoria } from "types/categoria";
-import { SpringPage } from 'types/spring';
+import { SpringPage } from "types/spring";
 import { requestBackend } from "util/requests";
 
 type ControlComponetsData = {
-    activePage: number;
-};  
+  activePage: number;
+};
 
 const Categorias = () => {
   const [page, setPage] = useState<SpringPage<Categoria>>();
@@ -46,41 +46,40 @@ const Categorias = () => {
   }, [getCategorias]);
 
   return (
-    <>
-      <div className="container">
-        <TitleBar tituloPagina="Categorias" />
-        
-        <CategoriaFilter />
+    <div className="container">
+      <TitleBar tituloPagina="Categorias" />
 
-        <TitleResult descricao="categoria" quantidade={20} />
+      <CategoriaFilter />
 
-        <div className="container-datatable">
-          <div className="table-responsive">
-            <table className="table table-striped table-sm">
-              <thead>
-                <tr>
-                  <th>Categorias</th>
+      <TitleResult descricao="categoria" quantidade={page ? page.totalElements : 0} />
+
+      <div className="container-datatable">
+        <div className="table-responsive">
+          <table className="table table-striped table-sm">
+            <thead>
+              <tr>
+                <th>Categorias</th>
+              </tr>
+            </thead>
+            <tbody>
+              {page?.content.map((categoria) => (
+                <tr key={categoria.codigo}>
+                  <td>{categoria.descricao}</td>
                 </tr>
-              </thead>
-              <tbody>
-                {page?.content.map((item) => (
-                  <tr key={item.codigo}>
-                    <td>{item.descricao}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+              ))}
+            </tbody>
+          </table>
         </div>
-
-        <Pagination
-            forcePage={page?.number}
-            pageCount={page ? page.totalPages : 0}
-            range={5}
-            onChange={handlePageChange}
-          />
       </div>
-    </>
+      <div className="container-paginacao">
+        <Pagination
+          forcePage={page?.number}
+          pageCount={page ? page.totalPages : 0}
+          range={5}
+          onChange={handlePageChange}
+        />
+      </div>
+    </div>
   );
 };
 

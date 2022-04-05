@@ -34,4 +34,3 @@ const Pagination = ( { forcePage, pageCount, range, onChange } : Props) => {
 };
 
 export default Pagination;
-
