@@ -1,22 +1,22 @@
-.footer {
+.rodape {
     flex-shrink: 0;
     text-align: center;
     line-height: 1.8;
     background-color: var(--color-primary) 
 }
 
-.container-footer {
+.container-rodape {
     margin-top: 0px;
 }
 
-.container-texto {
+.container-texto-rodape {
     font-size: 13px;
     color: #ccc;
 }
 
 .container-logo-rodape {
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     font-size: 14px;
     color: #FFF;
 }

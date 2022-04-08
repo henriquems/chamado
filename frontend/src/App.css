@@ -8,12 +8,6 @@ html, body {
     font-family: "Ubuntu", sans-serif;
 }
 
-#root {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
 ul {
     list-style-type: none;
     margin: 0;
@@ -26,8 +20,20 @@ a:hover {
     color: unset;
 }
 
+#root {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
 .content {
     flex: 1 0 auto;
+    margin-top: 130px;
+}
+
+.container-chamado {
+    width: 95%;
+    align-self: center;    
 }
 
 .footer {
@@ -43,12 +49,6 @@ a:hover {
     color: var(--color-primary) !important;
 }
 
-.base-card {
-  margin-top: 25px;
-  background-color: #f4f4f4;
-  border-radius: 10px;
-}
-  
 .base-input {
   border-radius: 5px;
   font-size: 1em;
@@ -61,80 +61,101 @@ a:hover {
   color: #9E9E9E;
 }
 
-/*Início css Select */
-.select__control {
-    border-radius: 5px !important;
-    font-size: 1em;
-    letter-spacing: -0.015em;
-    color: #263238;
-    height: 45px;
+.container-paginacao {
+    margin-top: 20px;
+    margin-bottom: 50px;
 }
 
-.select__placeholder {
-    color: #9E9E9E !important;
+/*INÍCIO STILO CARD*/
+.base-card {
+    margin-top: 25px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    border: 1px solid #f4f4f4;
+    padding: 20px;
+  }
+
+.container-card-titulo {
+    margin-left: 5px;  
+    margin-bottom: 20px;
 }
 
-.select__indicator-separator {
-    display: none;
-}
-/*Fim css Select*/
-
-
-.container-tituto-pesquisa {
-    padding: 10px 0 0 10px;
-    margin-left: 10px;
-}
-
-.titulo-pesquisa {
+.card-titulo {
     font-size: 16px;
-}
-
-.label-form-pesquisa {
     color: #999;
-    font-size: 16px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    font-weight: 600;
 }
 
-.container-campos-pesquisa {
-   padding-top: 10px;
+.container-card-form {
+   padding: 10px;
+   padding-top: 20px;
    padding-bottom: 20px;
-   margin-left: 20px;
-   margin-right: 20px;
-}
+   border-radius: 10px;
+   border: 1px solid #e6e6e6;
+ }
 
-.container-buttons-pesquisa {
+.container-buttons-card {
     display: flex;
-    margin-top: 44px;
     padding: 0;
 }
 
-.buttons-pesquisa {
-    width: 110px;
+.container-botao-card-esq {
+    padding-right: 10px;
+}
+
+.container-botao-card-dir {
+    padding-left: 10px;
+}
+
+.buttons-card {
     border-radius: 5px;
     margin-right: 10px;
 }
+/*FIM ESTILO CARD*/
 
-.icone-pesquisa {
-    margin-right:  10px;
-}
-
-.container-resultado-pesquisa {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 40px;
-}
-
-.button-novo {
-    margin-right: 20px;
-    height: 45px;
-}
-
+/*INÍCIO TABELA DE DADOS*/
 .container-datatable {
     margin-top: 10px;
 }
 
-.container-paginacao {
- margin-top: 20px;
- margin-bottom: 50px;
+.icone-editar {
+    color: #0d6efd;
+    font-size: 30px;
 }
+
+.icone-excluir {
+    color: #dd3333;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.coluna-pequena {
+    width: 70px;
+    text-align: center;
+}
+/*FIM TABELA DE DADOS*/
+
+/*INÍCIO TABELA DE LABELS E CAMPOS DO FORM*/
+.container-label-form {
+    padding: 5px
+}
+
+.container-label-form label {
+    color: #999;
+    font-size: 16px;
+}
+
+.container-campo-form {
+    padding: 5px
+}
+
+.container-buttons-form {
+    display: flex;
+}
+
+.container-button {
+    padding-top: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+/*FIM TABELA DE LABELS E CAMPOS DO FORM*/

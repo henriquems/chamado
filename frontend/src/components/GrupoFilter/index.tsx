@@ -1,106 +1,130 @@
 import { useEffect, useState } from "react";
 import { Permissao } from "types/permissao";
 import { requestBackend } from "util/requests";
-import { Controller, useForm } from 'react-hook-form';
+import { useForm } from "react-hook-form";
 import Select from "react-select";
 
 export type GrupoFilterData = {
-    descricao: string;
-    permissao: Permissao | null;
-}
+  descricao: string;
+  permissao: Permissao | null;
+};
 
 type Props = {
-    onSubmitFilter : (data: GrupoFilterData) => void;
-}
+  onSubmitFilter: (data: GrupoFilterData) => void;
+};
 
-const GrupoFilter = ({onSubmitFilter} : Props) => {
-    const [selectPermissoes, setSelectPermissoes] = useState<Permissao[]>();
+const GrupoFilter = ({ onSubmitFilter }: Props) => {
+  const [selectPermissoes, setSelectPermissoes] = useState<Permissao[]>();
 
-    useEffect(() => {
-        requestBackend({ url: "/permissoes" }).then((response) => {
-            setSelectPermissoes(response.data.content);
-        });
-    }, []);
+  useEffect(() => {
+    requestBackend({ url: "/permissoes" }).then((response) => {
+      setSelectPermissoes(response.data.content);
+    });
+  }, []);
 
-    const {
-        register,
-        handleSubmit,
-        setValue,
-        getValues,
-        control,
-    } = useForm<GrupoFilterData>();
+  const { register, handleSubmit, setValue, getValues } = useForm<GrupoFilterData>();
 
-    const onSubmit = (formData: GrupoFilterData) => {
-        onSubmitFilter(formData);
-    }
-    
-    const handleFormClear = () => {
-        setValue('descricao', '');
-        setValue('permissao', null);
-    }
-    
-    const handleChangePermissao = (value: Permissao) => {
-        setValue('permissao', value);
-    
-        const obj : GrupoFilterData = {
-          descricao: getValues('descricao'),
-          permissao: getValues('permissao')
-        }
-    
-        onSubmitFilter(obj);
-    }
-    
-    return (
-        <div className='base-card'>
-            <div className="container-tituto-pesquisa">
-                <label className="titulo-pesquisa">Filtro para pesquisa</label>
+  const onSubmit = (formData: GrupoFilterData) => {
+    onSubmitFilter(formData);
+  };
+
+  const handleChangePermissao = (value: Permissao) => {
+    setValue("permissao", value);
+
+    const obj: GrupoFilterData = {
+      descricao: getValues("descricao"),
+      permissao: getValues("permissao"),
+    };
+
+    onSubmitFilter(obj);
+  };
+
+  const limpar = () => {
+    setValue("descricao", "");
+    setValue("permissao", null);
+  };
+
+  return (
+    <div className="base-card">
+      <div className="container-card-titulo">
+        <label className="card-titulo">Filtros para pesquisa</label>
+      </div>
+
+      <div className="container-card-form">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          
+        <div className="row">
+          <div className="col-6 col-lg-2 col-md-2 col-12 col-sm-12">
+            <div className="container-label-form">
+              <label>Nome:</label>
             </div>
-            
-            <div className="container-campos-pesquisa">
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="row">
-                        <div className="col-sn-12 col-md-6 col-lg-6">
-                            <label className="label-form-pesquisa">Descrição: </label>
-                            <input
-                                {...register('descricao')}
-                                type="text"
-                                className="form-control"
-                                name="descricao"
-                            />
-                        </div>
-                        <div className="col-sn-12 col-md-6 col-lg-6">
-                            <label className="label-form-pesquisa">Permissão: </label>
-                            <Controller
-                                name="permissao"
-                                control={control}
-                                render={({ field }) => (
-                                    <Select {...field}
-                                    options={selectPermissoes}
-                                    isClearable
-                                    classNamePrefix="product-crud-select"
-                                    onChange={value => handleChangePermissao(value as Permissao)}
-                                    getOptionLabel={(permissao: Permissao) => permissao.nome}
-                                    getOptionValue={(permissao: Permissao) => String(permissao.codigo)
-                                    }
-                                    />
-                                )}
-                            />
-                        </div>
-                        <div className="col-sn-12 col-md-6 col-lg-6">
-                            <div className="container-buttons-pesquisa">
-                                <button className="btn btn-primary buttons-pesquisa text-white">
-                                    PESQUISAR
-                                </button>
-                                <button onClick={handleFormClear} className="btn btn-secondary buttons-pesquisa">
-                                    LIMPAR
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+          </div>
+          <div className="col-6 col-lg-4 col-md-10 col-12 col-sm-12">
+            <div className="container-campo-form">
+              <input
+                  {...register("descricao")}
+                  type="text"
+                  className="form-control"
+                  name="descricao"
+                />
             </div>
-        </div>
-    );
-}
+          </div>
+          
+          <div className="w-100"></div>
+
+          <div className="col-6 col-lg-2 col-md-2 col-12 col-sm-12">
+            <div className="container-label-form">
+              <label>Permissão:</label>
+            </div>
+          </div>
+          <div className="col-6 col-lg-4 col-md-10 col-12 col-sm-12">
+            <div className="container-campo-form">
+              <Select
+                options={selectPermissoes}
+                isClearable
+                classNamePrefix="product-crud-select"
+                onChange={(value) =>
+                  handleChangePermissao(value as Permissao)
+                }
+                getOptionLabel={(permissao: Permissao) => permissao.nome}
+                getOptionValue={(permissao: Permissao) =>
+                  String(permissao.codigo)
+                }
+              />
+            </div>
+          </div>
+
+          <div className="w-100"></div>
+          
+          <div className="col-6 col-lg-2 col-md-2 col-12 col-sm-12">
+            <div className="container-label-form"></div>
+          </div>
+          <div className="col-6 col-lg-4 col-md-10 col-12 col-sm-12">
+            <div className="container-buttons-form">
+              <div className="container-button">
+                  <button
+                    type="submit"
+                    className="btn btn-primary text-white"
+                  >
+                    PESQUISAR
+                  </button>
+                </div>
+                <div className="container-button">
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    onClick={limpar}
+                  >
+                    LIMPAR
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
 
 export default GrupoFilter;

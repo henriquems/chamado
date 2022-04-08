@@ -1,17 +1,18 @@
 import { useForm } from "react-hook-form";
 
-export type CategoriaFilterData = {
+export type SubcategoriaFilterData = {
   descricao: string;
 };
 
 type Props = {
-  onSubmitFilter: (data: CategoriaFilterData) => void;
+  onSubmitFilter: (data: SubcategoriaFilterData) => void;
 };
 
-const CategoriaFilter = ({ onSubmitFilter }: Props) => {
-  const { register, handleSubmit, setValue } = useForm<CategoriaFilterData>();
+const SubcategoriaFilter = ({ onSubmitFilter }: Props) => {
+  const { register, handleSubmit, setValue } =
+    useForm<SubcategoriaFilterData>();
 
-  const onSubmit = (formData: CategoriaFilterData) => {
+  const onSubmit = (formData: SubcategoriaFilterData) => {
     onSubmitFilter(formData);
   };
 
@@ -74,4 +75,4 @@ const CategoriaFilter = ({ onSubmitFilter }: Props) => {
   );
 };
 
-export default CategoriaFilter;
+export default SubcategoriaFilter;

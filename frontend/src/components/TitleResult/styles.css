@@ -2,7 +2,9 @@
     margin-top: 10px;  
     display: flex;
     justify-content: space-between;
-    padding-top: 20px; 
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 10px;
 }
 
 .container-titulo-resultado {
@@ -17,7 +19,7 @@
 
 .icone-title-result {
     color: var(--color-primary);
-    font-size: 20px;
+    font-size: 25px;
 }
 
 .container-title-bar-resultado-pesquisa {

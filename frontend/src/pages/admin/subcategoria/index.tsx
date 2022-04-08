@@ -1,11 +1,26 @@
-import TitleBar from "components/TitleBar";
+import Footer from "components/Footer";
+import Navbar from "components/Navbar";
+import { Route, Switch } from "react-router-dom";
+import CadastroSubcategoria from "./cadastro";
+import PesquisaSubcategorias from "./pesquisa";
 
-const Subcategoria = () => {
-    return(
-        <div className="container">
-            <TitleBar tituloPagina="Subcategorias" />
-        </div>
-    );
-}
+const Subcategorias = () => {
+  return (
+    <>
+      <Navbar />
 
-export default Subcategoria;
+      <Switch>
+        <Route path="/admin/subcategoria" exact>
+          <PesquisaSubcategorias />
+        </Route>
+        <Route path="/admin/subcategoria/:codigo">
+          <CadastroSubcategoria />
+        </Route>
+      </Switch>
+
+      <Footer />
+    </>
+  );
+};
+
+export default Subcategorias;

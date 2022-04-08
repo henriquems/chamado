@@ -1,66 +1,121 @@
-import { useEffect, useState } from "react";
-import { Permissao } from "types/permissao";
-import { requestBackend } from "util/requests";
-import Select from "react-select";
+import { useForm } from "react-hook-form";
 
-const UsuarioFilter = () => {
-    const [selectPermissao, setSelectPermissao] = useState<Permissao[]>();
+export type UsuarioFilterData = {
+  nome: string;
+  email: string;
+};
 
-    useEffect(() => {
-        requestBackend({ url: "/permissoes" }).then((response) => {
-        setSelectPermissao(response.data.content);
-        });
-    }, []);
+type Props = {
+  onSubmitFilter: (data: UsuarioFilterData) => void;
+};
+
+const UsuarioFilter = ({ onSubmitFilter }: Props) => {
+  const { register, handleSubmit, setValue, } = useForm<UsuarioFilterData>();
+
+  const onSubmit = (formData: UsuarioFilterData) => {
+    onSubmitFilter(formData);
+  };
+
+  const limpar = () => {
+    setValue("nome", "");
+    setValue("email", "");
+  };
     
     return (
-        <div className="base-card">
-        <div className="container-tituto-pesquisa">
-          <label className="titulo-pesquisa">Filtros para pesquisa</label>
+      <div className="base-card">
+        <div className="container-card-titulo">
+          <label className="card-titulo">Filtros para pesquisa</label>
         </div>
 
-        <div className="container-campos-pesquisa">
-          <form action="">
+        <div className="container-card-form">
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="row">
-              <div className="col-sn-12 col-md-6 col-lg-4">
-                <label className="label-form-pesquisa">Permissão: </label>
-                <Select
-                  options={selectPermissao}
-                  classNamePrefix="select"
-                  isMulti
-                  getOptionLabel={(permissao: Permissao) => permissao.nome}
-                  getOptionValue={(permissao: Permissao) =>
-                    String(permissao.codigo)
-                  }
-                />
+              <div className="col-6 col-lg-2 col-md-2 col-12 col-sm-12">
+                <div className="container-label-form">
+                  <label>Nome:</label>
+                </div>
               </div>
-              <div className="col-sn-12 col-md-6 col-lg-4">
-                <label className="label-form-pesquisa">Instituto: </label>
-                <input type="text" className="form-control base-input" />
+              <div className="col-6 col-lg-4 col-md-4 col-12 col-sm-12">
+                <div className="container-campo-form">
+                  <input
+                    {...register("nome")}
+                    type="text"
+                    className="form-control"
+                    name="nome"
+                  />
+                </div>
               </div>
-              <div className="col-sn-12 col-md-6 col-lg-4">
-                <label className="label-form-pesquisa">Setor: </label>
-                <input type="text" className="form-control base-input" />
+              <div className="col-6 col-lg-2 col-md-2 col-12 col-sm-12">
+                <div className="container-label-form">
+                    <label>E-mail:</label>
+                  </div>
               </div>
-              <div className="col-sn-12 col-md-6 col-lg-4">
-                <label className="label-form-pesquisa">Nome: </label>
-                <input type="text" className="form-control base-input" />
+              <div className="col-6 col-lg-4 col-md-4 col-12 col-sm-12">
+                <div className="container-campo-form">
+                  <input
+                    {...register("email")}
+                    type="text"
+                    className="form-control"
+                    name="email"
+                  />
+                </div>
               </div>
-              <div className="col-sn-12 col-md-6 col-lg-4">
-                <label className="label-form-pesquisa">E-mail: </label>
-                <input type="text" className="form-control base-input" />
+
+              <div className="w-100"></div>
+
+              <div className="col-6 col-lg-2 col-md-2 col-12 col-sm-12">
+                <div className="container-label-form">
+                  <label>Instituto:</label>
+                </div>
               </div>
-              <div className="col-sn-12 col-md-6 col-lg-4">
-                <label className="label-form-pesquisa">Status: </label>
-                <input type="text" className="form-control base-input" />
+              <div className="col-6 col-lg-4 col-md-4 col-12 col-sm-12">
+                <div className="container-campo-form">
+                  <input
+                    {...register("email")}
+                    type="text"
+                    className="form-control"
+                    name="email"
+                  />
+                </div>
               </div>
-              <div className="col-sn-12 col-md-6 col-lg-4">
-                <div className="container-buttons-pesquisa">
-                  <button className="btn btn-primary buttons-pesquisa text-white">
-                    PESQUISAR
-                  </button>
-                  <button className="btn btn-secondary buttons-pesquisa">
-                    LIMPAR
-                  </button>
+              <div className="col-6 col-lg-2 col-md-2 col-12 col-sm-12">
+                <div className="container-label-form">
+                  <label>Setor:</label>
+                </div>
+              </div>
+              <div className="col-6 col-lg-4 col-md-4 col-12 col-sm-12">
+                <div className="container-campo-form">
+                  <input
+                    {...register("email")}
+                    type="text"
+                    className="form-control"
+                    name="email"
+                  />
+                </div>
+              </div>
+
+              <div className="w-100"></div>
+
+              <div className="col-6 col-lg-2 col-md-2 col-12 col-sm-12"></div>
+              <div className="col-6 col-lg-4 col-md-4 col-12 col-sm-12">
+                <div className="container-buttons-form">
+                  <div className="container-button">
+                    <button
+                      type="submit"
+                      className="btn btn-primary text-white"
+                    >
+                      PESQUISAR
+                    </button>
+                  </div>
+                  <div className="container-button">
+                    <button
+                      type="button"
+                      className="btn btn-secondary"
+                      onClick={limpar}
+                    >
+                      LIMPAR
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
