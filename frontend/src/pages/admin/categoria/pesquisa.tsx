@@ -38,6 +38,7 @@ const PesquisaCategorias = () => {
     const config: AxiosRequestConfig = {
       method: "GET",
       url: "/categorias",
+      withCredentials: true,
       params: {
         page: controlComponetsData.activePage,
         size: 10,

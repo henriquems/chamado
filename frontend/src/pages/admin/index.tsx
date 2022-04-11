@@ -1,23 +1,33 @@
-import TitleBar from "components/TitleBar";
+import Footer from "components/Footer";
+import Navbar from "components/Navbar";
+import PrivateRoute from "components/PrivateRoute";
+import { Switch } from "react-router-dom";
+import Categorias from "./categoria";
+import Subcategorias from "./subcategoria";
+import Usuarios from "./usuario";
 
 const Admin = () => {
-    return (
-        <div className="container-chamado">
-            <TitleBar tituloPagina="Área Restrita" />
-      
-            <div className="base-card">
-                <div className="container-card-titulo">
-                    <label className="card-titulo">Dados dos Chamados</label>
-                </div>
+  return (
+    <>
+      <Navbar />
 
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-            </div>
-        </div>
-    );
-}
+      <Switch>
+        <PrivateRoute path="/admin/categoria">
+          <Categorias />
+        </PrivateRoute>
+
+        <PrivateRoute path="/admin/subcategoria">
+          <Subcategorias />
+        </PrivateRoute>
+
+        <PrivateRoute path="/admin/usuario" roles={['ROLE_ADMIN']}>
+          <Usuarios />
+        </PrivateRoute>
+      </Switch>
+
+      <Footer />
+    </>
+  );
+};
 
 export default Admin;

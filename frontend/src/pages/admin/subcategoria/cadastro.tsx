@@ -39,7 +39,8 @@ const CadastroSubcategoria = () => {
     const config: AxiosRequestConfig = {
       method: isEditing ? 'PUT' : 'POST',
       url: isEditing ? `/subcategorias/${codigo}` : '/subcategorias',
-      data: formData
+      data: formData,
+      withCredentials: true
     };
 
     requestBackend(config).then((response) => {
@@ -91,13 +92,17 @@ const CadastroSubcategoria = () => {
               <div className="col-6 col-lg-4 col-md-10 col-12 col-sm-12">
                 <div className="container-campo-form">
                   <input
-                    {...register('descricao', { required: 'Campo descrição obrigatório' })}
+                    {...register("descricao", {
+                      required: "Campo descrição obrigatório",
+                    })}
                     type="text"
                     className={`form-control ${
-                      errors.descricao ? 'is-invalid' : ''
+                      errors.descricao ? "is-invalid" : ""
                     }`}
-                    name="descricao" autoComplete='off' 
+                    name="descricao"
+                    autoComplete="off"
                   />
+                  <div className="invalid-feedback d-block">{ errors.descricao?.message }</div>
                 </div>
               </div>
 

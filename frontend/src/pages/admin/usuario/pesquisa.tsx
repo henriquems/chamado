@@ -1,7 +1,7 @@
 import TitleBar from "components/TitleBar";
 import TitleResult from "components/TitleResult";
 import { useCallback, useEffect, useState } from "react";
-import { requestBackend } from "util/requests";
+import { BASE_URL, requestBackend } from "util/requests";
 import { SpringPage } from "types/spring";
 import { Usuario } from "types/usuario";
 import { AxiosRequestConfig } from "axios";
@@ -33,7 +33,9 @@ const PesquisaUsuarios = () => {
   const getUsuarios = useCallback(() => {
     const config: AxiosRequestConfig = {
       method: "GET",
+      baseURL: BASE_URL,
       url: "/usuarios",
+      withCredentials: true,
       params: {
         page: controlComponetsData.activePage,
         size: 10,

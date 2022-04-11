@@ -7,8 +7,23 @@ import { RiLogoutCircleRLine } from "@react-icons/all-files/ri/RiLogoutCircleRLi
 import { AiFillFolderOpen } from "@react-icons/all-files/ai/AiFillFolderOpen";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "./styles.css";
+import { removeAuthData } from "util/storage";
+import { useContext } from "react";
+import { AuthContext } from "AuthContext";
+import history from "util/history";
 
 const Navbar = () => {
+  const { setAuthContextData } = useContext(AuthContext);
+  
+  const handleLogoutClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    removeAuthData();
+    setAuthContextData({
+      authenticated : false
+    });
+    history.replace('/admin/auth/login')
+  }
+
   return (
     <div className="main-nav">
       <div className="container-chamado">
@@ -38,31 +53,13 @@ const Navbar = () => {
                   </NavLink>
                 </div>
               </li>
-              <li className="nav-item dropdown">
-                <div
-                  className="nav-link dropdown-toggle nav-titulo-submenu"
-                  data-bs-toggle="dropdown"
-                >
-                  <FaUser className="icone-menu" /> Usuários
+              <li className="nav-item">
+                <div className="nav-link">
+                  <NavLink to="/admin/usuario">
+                    <FaUser className="icone-menu" />
+                    Usuários
+                  </NavLink>
                 </div>
-                <ul className="dropdown-menu dropdown-menu-end fade-down">
-                  <li>
-                    <div className="dropdown-item">
-                      <NavLink to="/admin/grupo">
-                        <AiFillFolderOpen className="icone-menu" />
-                        Grupos
-                      </NavLink>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="dropdown-item">
-                      <NavLink to="/admin/usuario">
-                        <AiFillFolderOpen className="icone-menu" />
-                        Usuários
-                      </NavLink>
-                    </div>
-                  </li>
-                </ul>
               </li>
               <li className="nav-item dropdown">
                 <div
@@ -94,7 +91,9 @@ const Navbar = () => {
                 <div className="nav-link">
                   <NavLink to="/">
                     <RiLogoutCircleRLine className="icone-menu" />
-                    Logout
+                    <a href="#logout" onClick={handleLogoutClick}>
+                      Logout
+                    </a>
                   </NavLink>
                 </div>
               </li>

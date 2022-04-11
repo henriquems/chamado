@@ -52,6 +52,7 @@ const CadastroCategoria = () => {
       method: isEditing ? "PUT" : "POST",
       url: isEditing ? `/categorias/${codigo}` : "/categorias",
       data: formData,
+      withCredentials: true,
     };
 
     requestBackend(config)
